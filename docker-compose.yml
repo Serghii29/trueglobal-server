@@ -1,0 +1,10 @@
+version: '4.20.1'
+services:
+  dev-db:
+    image: postgres:15
+    ports:
+    - 5434:5432
+    environment:
+      POSTGRES_USER: Serghii29
+      POSTGRES_PASSWORD: jpOQA9aDTo5V
+      POSTGRES_DB: trueglobal
