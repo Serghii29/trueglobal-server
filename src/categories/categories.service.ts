@@ -52,17 +52,10 @@ export class CategoriesService {
     return category;
   }
 
-  async update(id: number, updateCategoryDto: UpdateCategoryDto) {
-    // const category = await this.prisma.category.findFirst({
-    //   where: { id },
-    // });
-
-    // if (!category) {
-    //   throw new NotFoundException('Category not found');
-    // }
-
-    const category = await this.findOne(id);
-
+  async update(
+    id: number,
+    updateCategoryDto: UpdateCategoryDto,
+  ): Promise<Category> {
     return await this.prisma.category.update({
       data: {
         name: updateCategoryDto.title,
@@ -71,9 +64,7 @@ export class CategoriesService {
     });
   }
 
-  async remove(id: number) {
-    const category = await this.findOne(id);
-
+  async remove(id: number): Promise<Category> {
     return await this.prisma.category.delete({
       where: { id },
     });
