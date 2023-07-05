@@ -26,8 +26,9 @@ CREATE TABLE "categories" (
 CREATE TABLE "tasks" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "dateStart" TIMESTAMP(3) NOT NULL,
-    "dateEnd" TIMESTAMP(3) NOT NULL,
+    "description" TEXT NOT NULL,
+    "dateStart" TEXT NOT NULL,
+    "dateEnd" TEXT NOT NULL,
     "taskId" INTEGER NOT NULL,
 
     CONSTRAINT "tasks_pkey" PRIMARY KEY ("id")

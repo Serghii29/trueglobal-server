@@ -43,8 +43,9 @@ model Task {
   id Int @id @default(autoincrement())
 
   name String
-  dateStart DateTime
-  dateEnd DateTime
+  description String
+  dateStart String
+  dateEnd String
 
   taskId Int
   task Category @relation(fields: [taskId], references: [id])
