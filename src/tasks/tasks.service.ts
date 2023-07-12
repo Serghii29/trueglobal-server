@@ -19,7 +19,7 @@ export class TasksService {
         description: createTaskDto.description,
         dateStart: createTaskDto.dateStart,
         dateEnd: createTaskDto.dateEnd,
-        taskId: createTaskDto.category.id,
+        categoryId: createTaskDto.category.id,
       },
     });
 
@@ -30,8 +30,10 @@ export class TasksService {
     return newTask;
   }
 
-  async findAll(): Promise<Task[]> {
-    return await this.prisma.task.findMany();
+  async findAll(categoryId: number): Promise<Task[]> {
+    return await this.prisma.task.findMany({
+      where: { categoryId },
+    });
   }
 
   async findOne(id: number) {
@@ -48,7 +50,12 @@ export class TasksService {
 
   async update(id: number, updateTaskDto: UpdateTaskDto) {
     return await this.prisma.task.update({
-      data: updateTaskDto,
+      data: {
+        name: updateTaskDto.name,
+        description: updateTaskDto.description,
+        dateStart: updateTaskDto.dateStart,
+        dateEnd: updateTaskDto.dateEnd,
+      },
       where: { id },
     });
   }
