@@ -18,7 +18,7 @@ export class UserService {
     try {
       const hashed_password = await argon.hash(createUserDto.password);
 
-      const existUser = await this.prisma.user.findUnique({
+      const existUser = await this.prisma.user.findFirst({
         where: {
           email: createUserDto.email,
         },

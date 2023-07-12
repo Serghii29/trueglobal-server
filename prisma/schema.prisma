@@ -33,7 +33,7 @@ model Category {
 
   name String
   userId Int
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   tasks Task[]
 
   @@map("categories")
@@ -47,8 +47,8 @@ model Task {
   dateStart String
   dateEnd String
 
-  taskId Int
-  task Category @relation(fields: [taskId], references: [id])
+  categoryId Int
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@map("tasks")
 }

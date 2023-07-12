@@ -26,10 +26,10 @@ export class TasksController {
     return this.tasksService.create(createTaskDto);
   }
 
-  @Get()
+  @Get(':categoryId')
   @UseGuards(JwtAuthGuard)
-  findAll() {
-    return this.tasksService.findAll();
+  findAll(@Param('categoryId') categoryId: string) {
+    return this.tasksService.findAll(+categoryId);
   }
 
   @Get(':id')
