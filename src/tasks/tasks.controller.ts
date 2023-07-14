@@ -32,10 +32,16 @@ export class TasksController {
     return this.tasksService.findAll(+categoryId);
   }
 
-  @Get(':id')
+  @Get('task/:id')
   @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.tasksService.findOne(+id);
+  }
+
+  @Get('count/:id')
+  @UseGuards(JwtAuthGuard)
+  findCount(@Param('id') id: string) {
+    return this.tasksService.findCount(+id);
   }
 
   @Patch(':id')
