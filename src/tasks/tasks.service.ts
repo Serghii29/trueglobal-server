@@ -48,6 +48,14 @@ export class TasksService {
     return task;
   }
 
+  async findCount(id: number) {
+    const taskCount = await this.prisma.task.count({
+      where: { categoryId: id },
+    });
+
+    return taskCount;
+  }
+
   async update(id: number, updateTaskDto: UpdateTaskDto) {
     return await this.prisma.task.update({
       data: {
